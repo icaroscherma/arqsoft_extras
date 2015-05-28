@@ -93,28 +93,16 @@ class ValuesControllerTest extends IntegrationTestCase
         $this->assertEquals($expected, $this->_response->body());
     }
 
+    // Same style of test used with TestPi but now testing E Function
     public function testE()
     {
-        // Tells that the header must be JSON
         $this->configRequest([
             'headers' => ['Accept' => 'application/json']
         ]);
-
-        // Get the contents from "ApplicationRoot->ValuesController->E_Function"
         $result = $this->get('/values/e');
-
-        // Check that the response was a 200
         $this->assertResponseOk();
-
-        // Tells you the expected content
-        $expected = [
-            'e' => '2.71828',
-        ];
-
-        // Encodes from PHP array to JSON
+        $expected = ['e' => '2.71828'];
         $expected = json_encode($expected, JSON_PRETTY_PRINT);
-
-        // Get the result if the assert $expected is equal to the response (body content)
         $this->assertEquals($expected, $this->_response->body());
     }
 }
